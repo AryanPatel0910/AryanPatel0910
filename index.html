@@ -3,69 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Personal Website</title>
-  <link rel="stylesheet" href="style.css">
+  <title>My Personal Homepage</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header / Navigation (optional) -->
+  <!-- Personal Introduction Section -->
   <header>
     <h1>Welcome to My Personal Website</h1>
   </header>
 
-  <!-- Q1: Personal Introduction -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi, I am John Doe, a passionate software systems student with an interest in web development, computer science, and emerging technologies. I enjoy learning new programming languages and applying them to solve real-world problems.
-    </p>
-  </section>
+  <main>
+    <!-- About Me -->
+    <section id="about-me">
+      <h2>About Me</h2>
+      <p>Hello! I am [Your Name], a passionate developer with an interest in software systems and web technologies. I enjoy creating dynamic websites and solving challenging problems.</p>
+      <!-- Profile Picture -->
+      <img src="images/personal_picture.png" alt="Profile Picture" id="profile-pic">
+    </section>
 
-  <!-- Profile Picture and Local Images -->
-  <section id="images">
-    <h2>My Images</h2>
-    <img src="images/profile.jpg" alt="My Profile Picture" width="200">
-    <div class="local-images">
-      <img src="images/birthplace1.jpg" alt="Local Image 1" width="200">
-      <img src="images/birthplace2.jpg" alt="Local Image 2" width="200">
-    </div>
-  </section>
+    <!-- Local Images -->
+    <section id="gallery">
+      <h2>My Hometown</h2>
+      <p>A few pictures from my birthplace:</p>
+      <div class="image-container">
+        <img src="images/local_picture_1.png" alt="Local Picture 1">
+        <img src="images/local_picture_2.png" alt="Local Picture 2">
+      </div>
+    </section>
 
-  <!-- Education and Achievements -->
-  <section id="education">
-    <h2>Education & Achievements</h2>
-    <p>
-      I completed my schooling at XYZ High School and am currently pursuing a degree in Computer Science at ABC University. I have received several awards including the Dean’s List recognition and first prize in regional coding contests.
-    </p>
-  </section>
+    <!-- Education & Skills -->
+    <section id="education-skills">
+      <h2>Education & Achievements</h2>
+      <p>I studied at XYZ School and have achieved many academic and extracurricular awards. My technical skills include:</p>
+      <ul>
+        <li>HTML, CSS, and JavaScript</li>
+        <li>Modern frontend frameworks</li>
+        <li>Software design and systems engineering</li>
+      </ul>
+    </section>
 
-  <!-- Technical Skills -->
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>HTML, CSS & JavaScript</li>
-      <li>C, Python, and Java</li>
-      <li>Git & GitHub</li>
-      <!-- Add more skills as needed -->
-    </ul>
-  </section>
+    <!-- CV Link -->
+    <section id="cv-link">
+      <h2>My CV</h2>
+      <p>You can view or download my CV in PDF format using the link below:</p>
+      <a href="cv.pdf" target="_blank">Download My CV</a>
+    </section>
 
-  <!-- CV Link -->
-  <section id="cv">
-    <h2>My Curriculum Vitae</h2>
-    <p>
-      You can view and download my CV <a href="cv.pdf" target="_blank">here</a>.
-    </p>
-  </section>
+    <!-- Text Analysis Section (Q3) -->
+    <section id="text-analysis">
+      <h2>Text Analysis</h2>
+      <p>Enter a text passage (over 10,000 words for full testing) and click "Analyze" to see various statistics and word token counts.</p>
+      <textarea id="textInput" rows="10" cols="60" placeholder="Paste your text here..."></textarea><br>
+      <button id="analyzeBtn">Analyze</button>
+      <div id="analysisResult"></div>
+    </section>
+  </main>
 
-  <!-- Section for Q3: Text Processing -->
-  <section id="text-processing">
-    <h2>Text Analyzer</h2>
-    <textarea id="inputText" rows="10" cols="80" placeholder="Paste more than 10000 words of text here"></textarea><br>
-    <button id="analyzeButton">Analyze Text</button>
-    <div id="analysisResults"></div>
-  </section>
-
-  <!-- Include the JavaScript file -->
+  <footer>
+    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+  </footer>
+  
   <script src="script.js"></script>
 </body>
 </html>

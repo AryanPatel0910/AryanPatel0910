@@ -1,93 +1,112 @@
-// --------- Q2: Capture Click Events and Page Views ---------
+// ===== Event Logging for Clicks and Page Views =====
 
-// Utility function to get a formatted current timestamp
-function getCurrentTimestamp() {
-    return new Date().toLocaleString();
+// Log a page view event on page load
+window.addEventListener('load', function() {
+  console.log(new Date().toISOString() + " | view | Page Loaded");
+});
+
+// Log all click events anywhere in the document
+document.addEventListener('click', function(event) {
+  // Determine a simple description of the clicked element using its tag name
+  let elementDesc = event.target.tagName;
+  // Optionally, you can add more details like class or id
+  if (event.target.id) {
+    elementDesc += `#${event.target.id}`;
+  } else if (event.target.className) {
+    elementDesc += `.${event.target.className}`;
   }
   
-  // Event listener to capture all click events on the document
-  document.addEventListener('click', function(event) {
-    // Determine the type of element clicked
-    let elementType = event.target.tagName.toLowerCase();
-    console.log(`${getCurrentTimestamp()} , click , ${elementType}`);
-  });
+  console.log(new Date().toISOString() + " | click | " + elementDesc);
+});
+
+// ===== Text Analysis for Q3 =====
+
+document.getElementById("analyzeBtn").addEventListener("click", analyzeText);
+
+function analyzeText() {
+  let text = document.getElementById("textInput").value;
   
-  // Option: Capture page views (for example, when the page loads)
-  window.addEventListener('load', function() {
-    console.log(`${getCurrentTimestamp()} , view , page load`);
-  });
-  
-  // --------- Q3: Text Analyzer ---------
-  
-  // Define lists for tokenization (sample lists—you can expand these as needed)
-  const pronouns = ['i', 'me', 'you', 'he', 'she', 'it', 'we', 'they'];
-  const prepositions = ['in', 'on', 'at', 'by', 'with', 'about', 'against', 'between', 'into', 'through'];
-  const indefiniteArticles = ['a', 'an'];
-  
-  // Function to analyze the text
-  function analyzeText(text) {
-    let analysis = {};
-    analysis.letters = (text.match(/[A-Za-z]/g) || []).length;
-    analysis.words = (text.match(/\b\w+\b/g) || []).length;
-    analysis.spaces = (text.match(/ /g) || []).length;
-    analysis.newlines = (text.match(/\n/g) || []).length;
-    // Special symbols: anything not a letter, number, whitespace, or common punctuation
-    analysis.specialSymbols = (text.match(/[^A-Za-z0-9\s\.,!?;:'"-]/g) || []).length;
-  
-    // Tokenize the text into words for further analysis (convert to lowercase for uniformity)
-    let tokens = text.toLowerCase().match(/\b\w+\b/g) || [];
-    
-    // Counting tokens in each category
-    let counts = {
-      pronouns: {},
-      prepositions: {},
-      indefiniteArticles: {}
-    };
-  
-    // Count occurrences for pronouns
-    pronouns.forEach(pronoun => { counts.pronouns[pronoun] = 0; });
-    // Count occurrences for prepositions
-    prepositions.forEach(prep => { counts.prepositions[prep] = 0; });
-    // Count occurrences for indefinite articles
-    indefiniteArticles.forEach(article => { counts.indefiniteArticles[article] = 0; });
-    
-    tokens.forEach(token => {
-      if (pronouns.includes(token)) counts.pronouns[token]++;
-      if (prepositions.includes(token)) counts.prepositions[token]++;
-      if (indefiniteArticles.includes(token)) counts.indefiniteArticles[token]++;
-    });
-    
-    return { analysis, counts };
-  }
-  
-  // Function to display the analysis results on the page
-  function displayResults(results) {
-    const resultsDiv = document.getElementById('analysisResults');
-    resultsDiv.innerHTML = `
-      <h3>Text Analysis Results:</h3>
-      <p><strong>Letters:</strong> ${results.analysis.letters}</p>
-      <p><strong>Words:</strong> ${results.analysis.words}</p>
-      <p><strong>Spaces:</strong> ${results.analysis.spaces}</p>
-      <p><strong>Newlines:</strong> ${results.analysis.newlines}</p>
-      <p><strong>Special Symbols:</strong> ${results.analysis.specialSymbols}</p>
-      <h4>Token Counts:</h4>
-      <h5>Pronouns</h5>
-      <pre>${JSON.stringify(results.counts.pronouns, null, 2)}</pre>
-      <h5>Prepositions</h5>
-      <pre>${JSON.stringify(results.counts.prepositions, null, 2)}</pre>
-      <h5>Indefinite Articles</h5>
-      <pre>${JSON.stringify(results.counts.indefiniteArticles, null, 2)}</pre>
-    `;
-  }
-  
-  // Attach event listener to the analyze button
-  document.getElementById('analyzeButton').addEventListener('click', function() {
-    const text = document.getElementById('inputText').value;
-    if (text.length < 10000) {
-      alert("Please enter text with more than 10000 words for analysis.");
-      return;
+  // Basic character counts
+  let numLetters = 0, numSpaces = 0, numNewlines = 0, numSpecial = 0;
+  for (const char of text) {
+    if (/[A-Za-z]/.test(char)) {
+      numLetters++;
     }
-    const results = analyzeText(text);
-    displayResults(results);
+    if (char === " ") {
+      numSpaces++;
+    }
+    if (char === "\n") {
+      numNewlines++;
+    }
+    // Define special symbols as punctuation and non-alphanumeric characters (excluding spaces and newlines)
+    if (/[^A-Za-z0-9\s]/.test(char)) {
+      numSpecial++;
+    }
+  }
+  
+  // Word count (splitting by any whitespace)
+  let wordsArray = text.trim().split(/\s+/).filter(Boolean);
+  let numWords = wordsArray.length;
+  
+  // Tokenize and count words using lowercase letters
+  let words = text.toLowerCase().match(/\b\w+\b/g) || [];
+  
+  // Count pronouns (example list)
+  const pronounsList = ["i", "me", "my", "mine", "you", "your", "yours", "he", "him", "his", "she", "her", "hers", "we", "us", "our", "ours", "they", "them", "their", "theirs"];
+  let pronounCounts = {};
+  pronounsList.forEach(p => pronounCounts[p] = 0);
+  words.forEach(word => {
+    if (pronounCounts.hasOwnProperty(word)) {
+      pronounCounts[word]++;
+    }
   });
   
+  // Count prepositions (example list)
+  const prepositionsList = ["in", "on", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from"];
+  let prepCounts = {};
+  prepositionsList.forEach(p => prepCounts[p] = 0);
+  words.forEach(word => {
+    if (prepCounts.hasOwnProperty(word)) {
+      prepCounts[word]++;
+    }
+  });
+  
+  // Count indefinite articles ("a" and "an")
+  const articlesList = ["a", "an"];
+  let articleCounts = {};
+  articlesList.forEach(a => articleCounts[a] = 0);
+  words.forEach(word => {
+    if (articleCounts.hasOwnProperty(word)) {
+      articleCounts[word]++;
+    }
+  });
+  
+  // Build result output to show counts
+  let resultHTML = `<h3>Basic Counts:</h3>`;
+  resultHTML += `<p>Letters: ${numLetters}</p>`;
+  resultHTML += `<p>Words: ${numWords}</p>`;
+  resultHTML += `<p>Spaces: ${numSpaces}</p>`;
+  resultHTML += `<p>Newlines: ${numNewlines}</p>`;
+  resultHTML += `<p>Special Symbols: ${numSpecial}</p>`;
+  
+  resultHTML += `<h3>Pronoun Counts:</h3><ul>`;
+  pronounsList.forEach(p => {
+    resultHTML += `<li>${p}: ${pronounCounts[p]}</li>`;
+  });
+  resultHTML += `</ul>`;
+  
+  resultHTML += `<h3>Preposition Counts:</h3><ul>`;
+  prepositionsList.forEach(p => {
+    resultHTML += `<li>${p}: ${prepCounts[p]}</li>`;
+  });
+  resultHTML += `</ul>`;
+  
+  resultHTML += `<h3>Indefinite Articles Counts:</h3><ul>`;
+  articlesList.forEach(a => {
+    resultHTML += `<li>${a}: ${articleCounts[a]}</li>`;
+  });
+  resultHTML += `</ul>`;
+  
+  // Output the result to the analysisResult div on the page
+  document.getElementById("analysisResult").innerHTML = resultHTML;
+}
