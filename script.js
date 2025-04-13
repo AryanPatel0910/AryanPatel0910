@@ -1,12 +1,12 @@
 // ===== Event Logging for Clicks and Page Views =====
 
-// Log a page view event on page load
-window.addEventListener('load', function() {
+// Log page view on load
+window.addEventListener("load", function () {
   console.log(new Date().toISOString() + " | view | Page Loaded");
 });
 
-// Log all click events on the document
-document.addEventListener('click', function(event) {
+// Log all click events on the document with target details
+document.addEventListener("click", function (event) {
   let elementDesc = event.target.tagName;
   if (event.target.id) {
     elementDesc += `#${event.target.id}`;
@@ -19,25 +19,27 @@ document.addEventListener('click', function(event) {
 // ===== Dark/Light Mode Toggle =====
 
 const modeToggleBtn = document.getElementById("mode-toggle");
-modeToggleBtn.addEventListener("click", function() {
+modeToggleBtn.addEventListener("click", function () {
   document.body.classList.toggle("dark");
-  // Change button text based on current mode
-  if (document.body.classList.contains("dark")) {
-    modeToggleBtn.textContent = "Light Mode";
-  } else {
-    modeToggleBtn.textContent = "Dark Mode";
-  }
+  // Update toggle button text based on active mode
+  modeToggleBtn.textContent = document.body.classList.contains("dark")
+    ? "Light Mode"
+    : "Dark Mode";
 });
 
-// ===== Text Analysis for Q3 =====
+// ===== Text Analysis Functionality =====
 
 document.getElementById("analyzeBtn").addEventListener("click", analyzeText);
 
 function analyzeText() {
-  let text = document.getElementById("textInput").value;
+  const text = document.getElementById("textInput").value;
   
-  // Basic counts
-  let numLetters = 0, numSpaces = 0, numNewlines = 0, numSpecial = 0;
+  // Initialize counts
+  let numLetters = 0,
+    numSpaces = 0,
+    numNewlines = 0,
+    numSpecial = 0;
+  
   for (const char of text) {
     if (/[A-Za-z]/.test(char)) numLetters++;
     if (char === " ") numSpaces++;
@@ -45,55 +47,61 @@ function analyzeText() {
     if (/[^A-Za-z0-9\s]/.test(char)) numSpecial++;
   }
   
-  // Word count based on whitespace
-  let wordsArray = text.trim().split(/\s+/).filter(Boolean);
-  let numWords = wordsArray.length;
+  // Count words by splitting on whitespace
+  const wordsArray = text.trim().split(/\s+/).filter(Boolean);
+  const numWords = wordsArray.length;
   
-  // Tokenize using regex to capture words in lowercase
-  let words = text.toLowerCase().match(/\b\w+\b/g) || [];
+  // Tokenize text for further counts (in lowercase)
+  const words = text.toLowerCase().match(/\b\w+\b/g) || [];
   
   // Count pronouns (sample list)
   const pronounsList = ["i", "me", "my", "mine", "you", "your", "yours", "he", "him", "his", "she", "her", "hers", "we", "us", "our", "ours", "they", "them", "their", "theirs"];
   let pronounCounts = {};
-  pronounsList.forEach(p => pronounCounts[p] = 0);
+  pronounsList.forEach(p => (pronounCounts[p] = 0));
   words.forEach(word => {
-    if (pronounCounts.hasOwnProperty(word)) pronounCounts[word]++;
+    if (pronounCounts.hasOwnProperty(word)) {
+      pronounCounts[word]++;
+    }
   });
   
   // Count prepositions (sample list)
   const prepositionsList = ["in", "on", "at", "by", "for", "with", "about", "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from"];
   let prepCounts = {};
-  prepositionsList.forEach(p => prepCounts[p] = 0);
+  prepositionsList.forEach(p => (prepCounts[p] = 0));
   words.forEach(word => {
-    if (prepCounts.hasOwnProperty(word)) prepCounts[word]++;
+    if (prepCounts.hasOwnProperty(word)) {
+      prepCounts[word]++;
+    }
   });
   
-  // Count indefinite articles ("a", "an")
+  // Count indefinite articles ("a" and "an")
   const articlesList = ["a", "an"];
   let articleCounts = {};
-  articlesList.forEach(a => articleCounts[a] = 0);
+  articlesList.forEach(a => (articleCounts[a] = 0));
   words.forEach(word => {
-    if (articleCounts.hasOwnProperty(word)) articleCounts[word]++;
+    if (articleCounts.hasOwnProperty(word)) {
+      articleCounts[word]++;
+    }
   });
   
-  // Construct output HTML for the analysis results
+  // Build HTML output for the analysis results
   let resultHTML = `<h3>Basic Counts:</h3>`;
-  resultHTML += `<p>Letters: ${numLetters}</p>`;
-  resultHTML += `<p>Words: ${numWords}</p>`;
-  resultHTML += `<p>Spaces: ${numSpaces}</p>`;
-  resultHTML += `<p>Newlines: ${numNewlines}</p>`;
-  resultHTML += `<p>Special Symbols: ${numSpecial}</p>`;
+  resultHTML += `<p><strong>Letters:</strong> ${numLetters}</p>`;
+  resultHTML += `<p><strong>Words:</strong> ${numWords}</p>`;
+  resultHTML += `<p><strong>Spaces:</strong> ${numSpaces}</p>`;
+  resultHTML += `<p><strong>Newlines:</strong> ${numNewlines}</p>`;
+  resultHTML += `<p><strong>Special Symbols:</strong> ${numSpecial}</p>`;
   
   resultHTML += `<h3>Pronoun Counts:</h3><ul>`;
-  pronounsList.forEach(p => resultHTML += `<li>${p}: ${pronounCounts[p]}</li>`);
+  pronounsList.forEach(p => (resultHTML += `<li>${p}: ${pronounCounts[p]}</li>`));
   resultHTML += `</ul>`;
   
   resultHTML += `<h3>Preposition Counts:</h3><ul>`;
-  prepositionsList.forEach(p => resultHTML += `<li>${p}: ${prepCounts[p]}</li>`);
+  prepositionsList.forEach(p => (resultHTML += `<li>${p}: ${prepCounts[p]}</li>`));
   resultHTML += `</ul>`;
   
   resultHTML += `<h3>Indefinite Articles Counts:</h3><ul>`;
-  articlesList.forEach(a => resultHTML += `<li>${a}: ${articleCounts[a]}</li>`);
+  articlesList.forEach(a => (resultHTML += `<li>${a}: ${articleCounts[a]}</li>`));
   resultHTML += `</ul>`;
   
   document.getElementById("analysisResult").innerHTML = resultHTML;

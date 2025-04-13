@@ -1,84 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Creative Personal Website</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Vibrant Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Toggle Button for Dark/Light Mode -->
+  <!-- Dark/Light Mode Toggle -->
   <button id="mode-toggle" class="mode-btn">Dark Mode</button>
-  
-  <!-- Header Section with Navigation -->
-  <header>
-    <h1 class="animate-fadein">Welcome to My Personal World</h1>
-    <nav>
-      <ul>
-        <li><a href="#about-me">About Me</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#education-skills">Education & Skills</a></li>
-        <li><a href="#cv-link">My CV</a></li>
-        <li><a href="#text-analysis">Text Analysis</a></li>
-      </ul>
-    </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Welcome to My World</h1>
+      <p>I am [Your Name], a creative developer & designer turning ideas into visually stunning experiences.</p>
+      <nav class="hero-nav">
+        <a href="#about">About Me</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#education">Education & Skills</a>
+        <a href="#cv">CV</a>
+        <a href="#analyze">Text Analysis</a>
+      </nav>
+    </div>
   </header>
-  
+
+  <!-- Main Content -->
   <main>
     <!-- About Me Section -->
-    <section id="about-me" class="section animate-slidein">
+    <section id="about" class="card">
       <h2>About Me</h2>
-      <p>Hello! I am [Your Name], a creative developer and designer passionate about cutting-edge software systems and innovative web technologies. I enjoy turning ideas into reality through code and design.</p>
-      <!-- Profile Picture -->
-      <img src="images/personal_picture.png" alt="Profile Picture" id="profile-pic" class="profile-img">
-    </section>
-    
-    <!-- Gallery Section -->
-    <section id="gallery" class="section animate-slidein">
-      <h2>My Hometown Gallery</h2>
-      <p>Enjoy a glimpse of the places that inspire me:</p>
-      <div class="image-container">
-        <img src="images/local_picture_1.png" alt="Local Picture 1" class="gallery-img">
-        <img src="images/local_picture_2.png" alt="Local Picture 2" class="gallery-img">
-        <!-- Add additional images here -->
-        <!-- Example: <img src="images/another_picture.png" alt="Another Picture" class="gallery-img"> -->
+      <div class="about-content">
+        <img src="images/personal_picture.png" alt="Profile Picture" class="profile-img" />
+        <p>Hello! I’m [Your Name]. With a passion for modern web technologies and creative design, I build vibrant and interactive digital experiences. I enjoy merging functionality with beautiful design to leave a unique mark in the digital world.</p>
       </div>
     </section>
-    
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="card">
+      <h2>Gallery</h2>
+      <p>A peek at some highlights from my hometown.</p>
+      <div class="gallery-grid">
+        <img src="images/local_picture_1.png" alt="Local Picture 1" class="gallery-img" />
+        <img src="images/local_picture_2.png" alt="Local Picture 2" class="gallery-img" />
+        <!-- Additional photos can be added here -->
+      </div>
+    </section>
+
     <!-- Education & Skills Section -->
-    <section id="education-skills" class="section animate-slidein">
-      <h2>Education & Achievements</h2>
-      <p>I studied at XYZ School and have earned several academic and extracurricular awards. Here are some of my technical skills:</p>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Modern Frontend Frameworks</li>
+    <section id="education" class="card">
+      <h2>Education & Skills</h2>
+      <p>I studied at XYZ School and received awards for both academic and creative accomplishments. My skill set includes:</p>
+      <ul class="skills-list">
+        <li>HTML, CSS, and JavaScript</li>
+        <li>Modern frontend frameworks</li>
         <li>Responsive Web Design</li>
-        <li>Software Design & Systems Engineering</li>
+        <li>Innovative software design & system architecture</li>
       </ul>
     </section>
-    
-    <!-- CV Link Section -->
-    <section id="cv-link" class="section animate-slidein">
+
+    <!-- CV Section -->
+    <section id="cv" class="card">
       <h2>My CV</h2>
-      <p>Click below to view or download my complete Curriculum Vitae:</p>
-      <a href="cv.pdf" target="_blank" class="cv-link">Download My CV</a>
+      <p>Review my professional journey. Click below to download my CV.</p>
+      <a href="cv.pdf" target="_blank" class="cv-btn">Download My CV</a>
     </section>
-    
+
     <!-- Text Analysis Section -->
-    <section id="text-analysis" class="section animate-slidein">
+    <section id="analyze" class="card">
       <h2>Text Analysis</h2>
-      <p>Paste your text (over 10,000 words for full testing) below and click "Analyze" to see statistics and token counts.</p>
-      <textarea id="textInput" rows="10" placeholder="Paste your text here..."></textarea>
-      <br>
+      <p>Paste your long text below (10,000+ words recommended for thorough testing), then click "Analyze" to see various text statistics.</p>
+      <textarea id="textInput" rows="8" placeholder="Paste your text here..."></textarea>
       <button id="analyzeBtn" class="action-btn">Analyze</button>
       <div id="analysisResult"></div>
     </section>
   </main>
-  
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+    <p>&copy; 2025 [Your Name] - All Rights Reserved</p>
   </footer>
-  
+
   <script src="script.js"></script>
 </body>
 </html>
