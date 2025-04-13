@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Personal Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation (optional) -->
+  <header>
+    <h1>Welcome to My Personal Website</h1>
+  </header>
+
+  <!-- Q1: Personal Introduction -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I am John Doe, a passionate software systems student with an interest in web development, computer science, and emerging technologies. I enjoy learning new programming languages and applying them to solve real-world problems.
+    </p>
+  </section>
+
+  <!-- Profile Picture and Local Images -->
+  <section id="images">
+    <h2>My Images</h2>
+    <img src="images/profile.jpg" alt="My Profile Picture" width="200">
+    <div class="local-images">
+      <img src="images/birthplace1.jpg" alt="Local Image 1" width="200">
+      <img src="images/birthplace2.jpg" alt="Local Image 2" width="200">
+    </div>
+  </section>
+
+  <!-- Education and Achievements -->
+  <section id="education">
+    <h2>Education & Achievements</h2>
+    <p>
+      I completed my schooling at XYZ High School and am currently pursuing a degree in Computer Science at ABC University. I have received several awards including the Dean’s List recognition and first prize in regional coding contests.
+    </p>
+  </section>
+
+  <!-- Technical Skills -->
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>HTML, CSS & JavaScript</li>
+      <li>C, Python, and Java</li>
+      <li>Git & GitHub</li>
+      <!-- Add more skills as needed -->
+    </ul>
+  </section>
+
+  <!-- CV Link -->
+  <section id="cv">
+    <h2>My Curriculum Vitae</h2>
+    <p>
+      You can view and download my CV <a href="cv.pdf" target="_blank">here</a>.
+    </p>
+  </section>
+
+  <!-- Section for Q3: Text Processing -->
+  <section id="text-processing">
+    <h2>Text Analyzer</h2>
+    <textarea id="inputText" rows="10" cols="80" placeholder="Paste more than 10000 words of text here"></textarea><br>
+    <button id="analyzeButton">Analyze Text</button>
+    <div id="analysisResults"></div>
+  </section>
+
+  <!-- Include the JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>

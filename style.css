@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+  }
+  
+  header, section {
+    margin-bottom: 30px;
+  }
+  
+  h1, h2 {
+    color: #333;
+  }
+  
+  #images img {
+    margin: 10px;
+    border: 2px solid #ccc;
+  }
+  
+  .local-images {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
