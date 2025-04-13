@@ -3,62 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Personal Homepage</title>
+  <title>My Creative Personal Website</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Personal Introduction Section -->
+  <!-- Toggle Button for Dark/Light Mode -->
+  <button id="mode-toggle" class="mode-btn">Dark Mode</button>
+  
+  <!-- Header Section with Navigation -->
   <header>
-    <h1>Welcome to My Personal Website</h1>
+    <h1 class="animate-fadein">Welcome to My Personal World</h1>
+    <nav>
+      <ul>
+        <li><a href="#about-me">About Me</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#education-skills">Education & Skills</a></li>
+        <li><a href="#cv-link">My CV</a></li>
+        <li><a href="#text-analysis">Text Analysis</a></li>
+      </ul>
+    </nav>
   </header>
-
+  
   <main>
-    <!-- About Me -->
-    <section id="about-me">
+    <!-- About Me Section -->
+    <section id="about-me" class="section animate-slidein">
       <h2>About Me</h2>
-      <p>Hello! I am [Your Name], a passionate developer with an interest in software systems and web technologies. I enjoy creating dynamic websites and solving challenging problems.</p>
+      <p>Hello! I am [Your Name], a creative developer and designer passionate about cutting-edge software systems and innovative web technologies. I enjoy turning ideas into reality through code and design.</p>
       <!-- Profile Picture -->
-      <img src="images/personal_picture.png" alt="Profile Picture" id="profile-pic">
+      <img src="images/personal_picture.png" alt="Profile Picture" id="profile-pic" class="profile-img">
     </section>
-
-    <!-- Local Images -->
-    <section id="gallery">
-      <h2>My Hometown</h2>
-      <p>A few pictures from my birthplace:</p>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="section animate-slidein">
+      <h2>My Hometown Gallery</h2>
+      <p>Enjoy a glimpse of the places that inspire me:</p>
       <div class="image-container">
-        <img src="images/local_picture_1.png" alt="Local Picture 1">
-        <img src="images/local_picture_2.png" alt="Local Picture 2">
+        <img src="images/local_picture_1.png" alt="Local Picture 1" class="gallery-img">
+        <img src="images/local_picture_2.png" alt="Local Picture 2" class="gallery-img">
+        <!-- Add additional images here -->
+        <!-- Example: <img src="images/another_picture.png" alt="Another Picture" class="gallery-img"> -->
       </div>
     </section>
-
-    <!-- Education & Skills -->
-    <section id="education-skills">
+    
+    <!-- Education & Skills Section -->
+    <section id="education-skills" class="section animate-slidein">
       <h2>Education & Achievements</h2>
-      <p>I studied at XYZ School and have achieved many academic and extracurricular awards. My technical skills include:</p>
+      <p>I studied at XYZ School and have earned several academic and extracurricular awards. Here are some of my technical skills:</p>
       <ul>
-        <li>HTML, CSS, and JavaScript</li>
-        <li>Modern frontend frameworks</li>
-        <li>Software design and systems engineering</li>
+        <li>HTML, CSS, JavaScript</li>
+        <li>Modern Frontend Frameworks</li>
+        <li>Responsive Web Design</li>
+        <li>Software Design & Systems Engineering</li>
       </ul>
     </section>
-
-    <!-- CV Link -->
-    <section id="cv-link">
+    
+    <!-- CV Link Section -->
+    <section id="cv-link" class="section animate-slidein">
       <h2>My CV</h2>
-      <p>You can view or download my CV in PDF format using the link below:</p>
-      <a href="cv.pdf" target="_blank">Download My CV</a>
+      <p>Click below to view or download my complete Curriculum Vitae:</p>
+      <a href="cv.pdf" target="_blank" class="cv-link">Download My CV</a>
     </section>
-
-    <!-- Text Analysis Section (Q3) -->
-    <section id="text-analysis">
+    
+    <!-- Text Analysis Section -->
+    <section id="text-analysis" class="section animate-slidein">
       <h2>Text Analysis</h2>
-      <p>Enter a text passage (over 10,000 words for full testing) and click "Analyze" to see various statistics and word token counts.</p>
-      <textarea id="textInput" rows="10" cols="60" placeholder="Paste your text here..."></textarea><br>
-      <button id="analyzeBtn">Analyze</button>
+      <p>Paste your text (over 10,000 words for full testing) below and click "Analyze" to see statistics and token counts.</p>
+      <textarea id="textInput" rows="10" placeholder="Paste your text here..."></textarea>
+      <br>
+      <button id="analyzeBtn" class="action-btn">Analyze</button>
       <div id="analysisResult"></div>
     </section>
   </main>
-
+  
   <footer>
     <p>&copy; 2025 [Your Name]. All rights reserved.</p>
   </footer>
